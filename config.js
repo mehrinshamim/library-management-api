@@ -8,10 +8,12 @@ const supabaseSecret = process.env.SUPABASE_SECRET;
 if (!supabaseUrl || !supabaseKey || !supabaseSecret) {
   throw new Error('Missing Supabase URL or key');
 }
-
-const supabase = createClient(supabaseUrl, supabaseKey, supabaseSecret, {
+async function initSupabase() {
+  const supabase = await createClient(supabaseUrl, supabaseKey, supabaseSecret, {
     pool: {
       maxClients: 20, // Increase the max_clients limit to 50
     },
   });
-module.exports = { supabase };
+  return supabase;
+}
+module.exports = { supabase: initSupabase() };

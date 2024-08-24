@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Endpoint Tester</title>
+</head>
+<body>
+  <h1>Endpoint Tester</h1>
+  <ul>
+    <li><a href="/signup">Signup</a></li>
+    <li><a href="/signin">Signin</a></li>
+    <li><a href="/:userid">Get User Details</a></li>
+    <li><a href="/:userid">Update User Details</a></li>
+    <li><a href="/:userid">Delete User</a></li>
+    <li><a href="/logout">Logout</a></li>
+  </ul>
+  <form id="signup-form">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email"><br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br><br>
+    <input type="submit" value="Signup">
+  </form>
+  <form id="signin-form">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email"><br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br><br>
+    <input type="submit" value="Signin">
+  </form>
+  <form id="update-form">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email"><br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br><br>
+    <input type="submit" value="Update">
+  </form>
+
+  <script>
+    const signupForm = document.getElementById('signup-form');
+    const signinForm = document.getElementById('signin-form');
+    const updateForm = document.getElementById('update-form');
+
+    signupForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const response = await fetch('/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await response.json();
+      console.log(data);
+    });
+
+    signinForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const response = await fetch('/signin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await response.json();
+      console.log(data);
+    });
+
+    updateForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const response = await fetch('/:userid', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await response.json();
+      console.log(data);
+    });
+  </script>
+</body>
+</html>
