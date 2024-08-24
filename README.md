@@ -19,4 +19,12 @@
 <img width="682" alt="1_books" src="https://github.com/user-attachments/assets/ec48e44d-3295-4d7a-94fd-1bbe1ec8a493">
 
 
+#### Loans
+1. Loaning a Book
+<img width="692" alt="6_loans_lent" src="https://github.com/user-attachments/assets/ac59d606-5954-4d84-b047-ee2a47ae948b">
+
+2. Returning a Book
+<img width="727" alt="7_loans_return" src="https://github.com/user-attachments/assets/7d996447-a613-4a3b-b693-5def7d27d393">
+
+
 
