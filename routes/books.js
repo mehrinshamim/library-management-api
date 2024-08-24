@@ -69,6 +69,7 @@ module.exports = function(supabase) {
         }
         res.json({ message: 'Book updated successfully', data: data[0] });
       } catch (error) {
+        console.error(error.message);
         res.status(500).json({ message: 'Error updating book' });
       }
     })
