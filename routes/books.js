@@ -9,7 +9,7 @@ module.exports = function(supabase) {
       const { data, error } = await supabase
         .from('Books')
         .insert([
-          { title: req.body.title, author: req.body.author, published_year: req.body.published_year, quantity: req.body.quantity },
+          { title: req.body.title, author: req.body.author, published_year: req.body.published_year},
         ])
         .select()
       if (error) {
@@ -43,7 +43,7 @@ module.exports = function(supabase) {
         const bookid = req.params.bookid;
         let { data: Book, error } = await supabase
           .from('Books')
-          .select('title,author,published_year,quantity')
+          .select('title,author,published_year,availability')
           .eq('id', bookid)
         if (error) throw error;
         if (!Book || Book.length === 0) {
@@ -59,7 +59,7 @@ module.exports = function(supabase) {
         const bookid = req.params.bookid;
         const { data, error } = await supabase
           .from('Books')
-          .update({ title: req.body.title, author: req.body.author, published_year: req.body.published_year, quantity: req.body.quantity })
+          .update({ title: req.body.title, author: req.body.author, published_year: req.body.published_year })
           .eq('id', bookid)
           .select()
         if (error) throw error;
@@ -74,15 +74,17 @@ module.exports = function(supabase) {
     .delete(async (req, res) => {
       try {
         const bookid = req.params.bookid;
+      
         const { data, error } = await supabase
           .from('Books')
           .delete()
           .eq('id', bookid)
         if (error) throw error;
-        if (!data || data.length === 0) {
+        if (error === null) {
+          res.json({ message: 'Book deleted successfully' });
+        } else {
           return res.status(404).json({ message: 'Book not found' });
         }
-        res.json({ message: 'Book deleted successfully' });
       } catch (error) {
         res.status(500).json({ message: 'Error deleting book' });
       }

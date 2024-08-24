@@ -14,23 +14,23 @@ const { supabase: initPromise } = require('./config');
       res.render('index')
   })
 
-  //const userRouter = require('./routes/users')(supabase)
-  //app.use('/api/users', userRouter)
+  const userRouter = require('./routes/users')(supabase)
+  app.use('/api/users', userRouter)
 
   const bookRouter = require('./routes/books')(supabase)
   app.use('/api/books', bookRouter)
 
-  //const loanRouter = require('./routes/loans')(supabase)
-  //app.use('/api/loans', loanRouter)
+  const loanRouter = require('./routes/loans')(supabase)
+  app.use('/api/loans', loanRouter)
 ////
-  const userRouter = require('./routes/users')
-  app.use('/api/users',userRouter)
+  //const userRouter = require('./routes/users')
+  //app.use('/api/users',userRouter)
 
   //const bookRouter = require('./routes/books')
   //app.use('/api/books',bookRouter)
 
-  const loanRouter = require('./routes/loans')
-  app.use('/api/loans',loanRouter)
+  //const loanRouter = require('./routes/loans')
+  //app.use('/api/loans',loanRouter)
 
   app.listen(3000)
 })();
