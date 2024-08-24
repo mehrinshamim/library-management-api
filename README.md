@@ -4,9 +4,7 @@
 
 #### Books CRUD Operations
 1. Add New Book
-<img width="673" alt="1_books-add_new" src="https://github.com/user-attachments/assets/32cf8b52-7ce3-477c-afd3-9268afbbc9a3">
-<img width="686" alt="test" src="https://github.com/user-attachments/assets/49209bdb-0a91-438a-8af3-61e675978647">
-
+<img width="685" alt="1_books-add_new" src="https://github.com/user-attachments/assets/544dd506-7dc8-492b-a9c0-544a3dc0e93b">
 
 2. View a book (api/books/:bookid)
 <img width="685" alt="2_books-bookid" src="https://github.com/user-attachments/assets/236db390-4fdb-47a7-86ce-9b981eb85ad2">
