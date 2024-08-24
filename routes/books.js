@@ -43,7 +43,7 @@ module.exports = function(supabase) {
         const bookid = req.params.bookid;
         let { data: Book, error } = await supabase
           .from('Books')
-          .select('title,author,published_year,availability')
+          .select('title,author,published_year,lent_status')
           .eq('id', bookid)
         if (error) throw error;
         if (!Book || Book.length === 0) {
@@ -51,6 +51,7 @@ module.exports = function(supabase) {
         }
         res.json({ message: 'Book retrieved successfully', data: Book[0] });
       } catch (error) {
+        console.error(error.message);
         res.status(500).json({ message: 'Error retrieving book' });
       }
     })
